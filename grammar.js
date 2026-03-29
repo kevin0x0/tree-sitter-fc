@@ -43,7 +43,7 @@ module.exports = grammar({
     $.comment,
   ],
 
-  word: $ => $.identifier,
+  word: $ => $._common_identifier,
 
   rules: {
     source_file: $ => seq(
@@ -81,7 +81,7 @@ module.exports = grammar({
 
     import_declaration: $ => seq(
       "import",
-      choice($.string_literal, $.name_spec),
+      choice($.string_literal, $._name_spec),
       ";",
     ),
 
@@ -105,7 +105,7 @@ module.exports = grammar({
 
     typeclass_name: $ => seq(
       $.identifier,
-      optional(seq("(", commaSep1($.name_spec), ")")),
+      optional(seq("(", commaSep1($._type_name_spec), ")")),
     ),
 
     impl_declaration: $ => seq(
@@ -120,7 +120,7 @@ module.exports = grammar({
           "}",
         ),
         seq(
-          $.name_spec,
+          $._type_name_spec,
           "for",
           $.type,
           "{",
@@ -143,7 +143,7 @@ module.exports = grammar({
       $.identifier,
       $.parameter_list,
       optional($.return_type),
-      choice(";", $.block),
+      choice(";", $.comp_statement),
     ),
 
     macro_declaration: $ => seq(
@@ -151,7 +151,7 @@ module.exports = grammar({
       $.identifier,
       $.macro_parameters,
       "=>",
-      $.expression,
+      $._expression,
       ";",
     ),
 
@@ -161,7 +161,7 @@ module.exports = grammar({
       $.identifier,
       optional(seq(":", $.type)),
       "=",
-      $.expression,
+      $._expression,
       ";",
     )),
 
@@ -173,7 +173,7 @@ module.exports = grammar({
         seq("const", $.identifier),
       ),
       optional(seq(":", $.type)),
-      optional(seq("=", $.expression)),
+      optional(seq("=", $._expression)),
       ";",
     ),
 
@@ -210,14 +210,14 @@ module.exports = grammar({
     struct_type: $ => prec.right(seq(
       "struct",
       optional($.generic_parameters),
-      optional($.identifier),
+      optional($.type_identifier),
       optional($.struct_layout),
     )),
 
     union_type: $ => prec.right(seq(
       "union",
       optional($.generic_parameters),
-      optional($.identifier),
+      optional($.type_identifier),
       optional($.struct_layout),
     )),
 
@@ -251,7 +251,7 @@ module.exports = grammar({
 
     enum_type: $ => seq(
       "enum",
-      optional($.identifier),
+      optional($.type_identifier),
       ":",
       $.type,
       "{",
@@ -261,7 +261,7 @@ module.exports = grammar({
 
     enum_member: $ => seq(
       $.identifier,
-      optional(seq("=", $.expression)),
+      optional(seq("=", $._expression)),
     ),
 
     attribute_list: $ => seq(
@@ -272,13 +272,18 @@ module.exports = grammar({
 
     generic_parameters: $ => seq(
       "<",
-      commaSep1($.generic_parameter),
+      commaSep1($._generic_parameter),
       ">",
     ),
 
-    generic_parameter: $ => seq(
+    _generic_parameter: $ => seq(
       $.typevarspec,
-      optional(seq(":", sep1($.name_spec, "&"))),
+      $.generic_parameter_spec,
+    ),
+
+    generic_parameter_spec: $ => seq(
+      $.typevarspec,
+      optional(seq(":", sep1($._type_name_spec, "&")))
     ),
 
     typevarspec_list: $ => seq(
@@ -288,13 +293,13 @@ module.exports = grammar({
     ),
 
     typevarspec: $ => seq(
-      $.identifier,
-      optional(seq("@", $.identifier)),
+      $.type_identifier,
+      optional(seq("@", choice("int", "bool"))),
     ),
 
     parameter_list: $ => seq(
       "(",
-      commaSep($.expression),
+      commaSep($._expression),
       ")",
     ),
 
@@ -303,13 +308,13 @@ module.exports = grammar({
       $.type,
     ),
 
-    block: $ => seq(
+    comp_statement: $ => seq(
       "{",
-      repeat($.statement),
+      repeat($._statement),
       "}",
     ),
 
-    statement: $ => choice(
+    _statement: $ => choice(
       $.enum_declaration,
       $.struct_declaration,
       $.union_declaration,
@@ -327,17 +332,17 @@ module.exports = grammar({
       $.continue_statement,
       $.return_statement,
       $.label_statement,
-      $.block,
+      $.comp_statement,
       $.expression_statement,
     ),
 
     let_statement: $ => seq(
       "let",
-      $.expression,
+      $._expression,
       optional(seq(
         "=",
-        $.expression,
-        optional(seq($.in_keyword, $.expression)),
+        $._expression,
+        optional(seq($.in_keyword, $._expression)),
       )),
       ";",
     ),
@@ -346,17 +351,17 @@ module.exports = grammar({
       "for",
       "(",
       choice($.let_statement, $.expression_statement),
-      $.expression,
+      $._expression,
       ";",
-      $.expression,
+      $._expression,
       ")",
-      $.statement,
+      $._statement,
     ),
 
     match_statement: $ => seq(
       "match",
       "(",
-      $.expression,
+      $._expression,
       ")",
       "{",
       repeat($.match_case),
@@ -364,48 +369,48 @@ module.exports = grammar({
     ),
 
     match_case: $ => seq(
-      $.expression,
+      $._expression,
       "=>",
-      $.statement,
+      $._statement,
     ),
 
     if_statement: $ => prec.right(seq(
       "if",
       "(",
-      choice($.let_condition, $.expression),
+      choice($.let_condition, $._expression),
       ")",
-      $.statement,
-      optional(seq("else", $.statement)),
+      $._statement,
+      optional(seq("else", $._statement)),
     )),
 
     let_condition: $ => seq(
       "let",
-      $.expression,
+      $._expression,
       "=",
-      $.expression,
+      $._expression,
     ),
 
     while_statement: $ => seq(
       "while",
       "(",
-      choice($.let_condition, $.expression),
+      choice($.let_condition, $._expression),
       ")",
-      $.statement,
+      $._statement,
     ),
 
     do_while_statement: $ => seq(
       "do",
-      $.statement,
+      $._statement,
       "while",
       "(",
-      $.expression,
+      $._expression,
       ")",
       ";",
     ),
 
     goto_statement: $ => seq(
       "goto",
-      $.expression,
+      $._expression,
       ";",
     ),
 
@@ -423,49 +428,49 @@ module.exports = grammar({
 
     return_statement: $ => seq(
       "return",
-      optional($.expression),
+      optional($._expression),
       ";",
     ),
 
     label_statement: $ => seq(
       "@",
       $.identifier,
-      $.statement,
+      $._statement,
     ),
 
     expression_statement: $ => seq(
-      $.expression,
+      $._expression,
       ";",
     ),
 
-    expression: $ => choice(
+    _expression: $ => choice(
       $.let_expression,
       $.case_expression,
       $.function_expression,
       $.macro_expression,
-      $.binary_expression,
+      $._binary_expression,
     ),
 
     let_expression: $ => prec.right(seq(
       "let",
-      $.expression,
+      $._expression,
       "=",
-      $.expression,
+      $._expression,
       $.in_keyword,
-      $.expression,
+      $._expression,
     )),
 
     case_expression: $ => prec.right(seq(
       "case",
-      $.expression,
+      $._expression,
       "of",
       commaSep1($.case_pair),
     )),
 
     case_pair: $ => seq(
-      $.expression,
+      $._expression,
       "=>",
-      $.expression,
+      $._expression,
     ),
 
     function_expression: $ => seq(
@@ -473,8 +478,8 @@ module.exports = grammar({
       $.parameter_list,
       optional($.return_type),
       choice(
-        seq("=>", $.expression),
-        $.block,
+        seq("=>", $._expression),
+        $.comp_statement,
       ),
     ),
 
@@ -482,75 +487,111 @@ module.exports = grammar({
       "macro",
       $.macro_parameters,
       "=>",
-      $.expression,
+      $._expression,
     ),
 
     macro_parameters: $ => seq(
       "!",
       "(",
-      commaSep($.expression),
+      commaSep($._expression),
       ")",
     ),
 
-    unary_expression: $ => choice(
-      seq(
-        choice("-", "!", "~", "++", "--", "*", "&", "const"),
-        $.unary_expression,
-      ),
-      $.postfix_expression,
+    _unary_expression: $ => choice(
+      $._postfix_expression,
+      $.neg_expression,
+      $.not_expression,
+      $.bnot_expression,
+      $.prefix_inc_expression,
+      $.prefix_dec_expression,
+      $.prefix_deref_expression,
+      $.prefix_ref_expression ,
+      $.const_expression,
     ),
 
-    postfix_expression: $ => prec.right(choice(
-      $.primary_expression,
-      seq($.postfix_expression, "@", optional("const")),
-      seq($.postfix_expression, "^"),
-      seq($.postfix_expression, "++"),
-      seq($.postfix_expression, "--"),
-      seq($.postfix_expression, ":", $.type),
-      seq($.postfix_expression, ".", choice($.identifier, $.integer_literal)),
-      seq($.postfix_expression, "->", $.identifier),
-      seq($.postfix_expression, $.argument_list),
-      seq($.postfix_expression, $.subscript),
-      seq($.postfix_expression, $.macro_arguments),
+    neg_expression: $ => seq("-", $._unary_expression),
+    not_expression: $ => seq("!", $._unary_expression),
+    bnot_expression: $ => seq("~", $._unary_expression),
+    prefix_inc_expression: $ => seq("++", $._unary_expression),
+    prefix_dec_expression: $ => seq("--", $._unary_expression),
+    prefix_deref_expression: $ => seq("*", $._unary_expression),
+    prefix_ref_expression: $ => seq("&", $._unary_expression),
+    const_expression: $ => seq("const", $._unary_expression),
+
+    _postfix_expression: $ => prec.right(choice(
+      $._primary_expression,
+      $.postfix_ref_expression,
+      $.postfix_deref_expression,
+      $.postfix_inc_expression,
+      $.postfix_dec_expression,
+      $.annotation_expression,
+      $.dot_expression,
+      $.function_call_expression,
+      $.subscript_expression,
+      $.macro_call_expression,
     )),
 
-    argument_list: $ => seq(
+    postfix_ref_expression: $ => seq($._postfix_expression, "@", optional("const")),
+    postfix_deref_expression: $ => seq($._postfix_expression, "^"),
+    postfix_inc_expression: $ => seq($._postfix_expression, "++"),
+    postfix_dec_expression: $ => seq($._postfix_expression, "--"),
+    annotation_expression: $ => prec.right(seq($._postfix_expression, ":", $.type)),
+
+    function_call_expression: $ => seq(
+      $._postfix_expression,
       "(",
-      commaSep($.expression),
+      commaSep($._expression),
       ")",
     ),
 
-    macro_arguments: $ => seq(
+    dot_expression: $ => seq(
+      $._postfix_expression, ".",
+      choice($.identifier, $.integer_literal),
+    ),
+
+    macro_call_expression: $ => seq(
+      $._postfix_expression,
       "!",
       "(",
-      commaSep($.expression),
+      commaSep($._expression),
       ")",
     ),
 
-    subscript: $ => seq(
+    subscript_expression: $ => seq(
+      $._postfix_expression,
       "[",
-      optional($.expression),
-      optional(seq(";", optional($.expression))),
+      choice(
+        $._expression,
+        seq(
+          optional($._expression),
+          ";",
+          optional($._expression)
+        )
+      ),
       "]",
     ),
 
-    binary_expression: $ => choice(
-      prec.right(PREC.assignment, seq($.expression, choice(
-        "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=",
-      ), $.expression)),
-      prec.left(PREC.and, seq($.binary_expression, "&&", $.binary_expression)),
-      prec.left(PREC.or, seq($.binary_expression, "||", $.binary_expression)),
-      prec.left(PREC.relational, seq($.binary_expression, choice("<", "<=", ">", ">=", "==", "!=",), $.binary_expression)),
-      prec.left(PREC.additive, seq($.binary_expression, choice("+", "-"), $.binary_expression)),
-      prec.left(PREC.multiplicative, seq($.binary_expression, choice("*", "/", "%"), $.binary_expression)),
-      prec.left(PREC.shift, seq($.binary_expression, choice("<<", ">>"), $.binary_expression)),
-      prec.left(PREC.bitwise, seq($.binary_expression, choice("&", "|", "<>"), $.binary_expression)),
-      $.unary_expression,
+    _binary_expression: $ => choice(
+      $._unary_expression,
+      $.binary_expression,
     ),
 
-    primary_expression: $ => choice(
+    binary_expression: $ => choice(
+      prec.right(PREC.assignment, seq($._binary_expression, choice(
+        "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=",
+      ), $._binary_expression)),
+      prec.left(PREC.and, seq($._binary_expression, "&&", $._binary_expression)),
+      prec.left(PREC.or, seq($._binary_expression, "||", $._binary_expression)),
+      prec.left(PREC.relational, seq($._binary_expression, choice("<", "<=", ">", ">=", "==", "!=",), $._binary_expression)),
+      prec.left(PREC.additive, seq($._binary_expression, choice("+", "-"), $._binary_expression)),
+      prec.left(PREC.multiplicative, seq($._binary_expression, choice("*", "/", "%"), $._binary_expression)),
+      prec.left(PREC.shift, seq($._binary_expression, choice("<<", ">>"), $._binary_expression)),
+      prec.left(PREC.bitwise, seq($._binary_expression, choice("&", "|", "<>"), $._binary_expression)),
+    ),
+
+    _primary_expression: $ => choice(
       $.construction_expression,
-      $.name_spec,
+      $._name_spec,
       $.integer_literal,
       $.float_literal,
       $.char_literal,
@@ -563,7 +604,7 @@ module.exports = grammar({
     ),
 
     construction_expression: $ => seq(
-      $.name_spec,
+      $._name_spec,
       "{",
       commaSep($.init_pair),
       "}",
@@ -572,29 +613,39 @@ module.exports = grammar({
     init_pair: $ => seq(
       $.identifier,
       "=",
-      $.expression,
+      $._expression,
     ),
 
     array_expression: $ => seq(
       "[",
-      commaSep($.expression),
+      commaSep($._expression),
       "]",
     ),
 
     parenthesized_expression: $ => choice(
       seq("(", ")"),
-      seq("(", $.expression, ")"),
-      seq("(", $.expression, ",", commaSep($.expression), ")"),
-      seq("(", $.block, ")"),
+      seq("(", $._expression, ")"),
+      seq("(", $._expression, ",", commaSep($._expression), ")"),
+      seq("(", $.comp_statement, ")"),
     ),
 
-    name_spec: $ => seq(
+    _name_spec: $ => choice(
       $.identifier,
-      repeat(choice(
-        seq("::", $.identifier),
-        seq("::", $.type_arguments),
-      )),
+      $.instantiation,
+      $.path,
     ),
+
+    instantiation: $ => seq($._name_spec, "::", $.type_arguments),
+    path: $ => seq($._name_spec, "::", $.identifier),
+
+    _type_name_spec: $ => choice(
+      $.type_identifier,
+      $.type_instantiation,
+      $.type_path,
+    ),
+
+    type_instantiation: $ => seq($._type_name_spec, "::", $.type_arguments),
+    type_path: $ => seq($._type_name_spec, "::", $.type_identifier),
 
     type_arguments: $ => seq(
       "<",
@@ -602,15 +653,18 @@ module.exports = grammar({
       ">",
     ),
 
-    type: $ => prec.right(choice(
-      $.type_atom,
-      seq("&", optional("const"), $.type),
-      seq($.type, "@", $.type),
-    )),
+    type: $ => choice(
+      $._type_atom,
+      $.prefix_ref_type,
+      $.postfix_ref_type,
+    ),
 
-    type_atom: $ => choice(
-      $.type_name,
-      $.type_literal,
+    prefix_ref_type: $ => prec.right(seq("&", optional("const"), $.type)),
+    postfix_ref_type: $ => prec.right(seq($.type, "@", $.type)),
+
+    _type_atom: $ => choice(
+      $._type_name_spec,
+      $._type_literal,
       $.enum_type,
       $.struct_type,
       $.union_type,
@@ -620,12 +674,12 @@ module.exports = grammar({
       $.type_in_expression,
     ),
 
-    type_name: $ => prec.right(seq(
-      $.name_spec,
+    type_short_instantiation: $ => prec.right(seq(
+      $._type_name_spec,
       optional($.type_arguments),
     )),
 
-    type_literal: $ => choice(
+    _type_literal: $ => choice(
       $.integer_literal,
       $.boolean_literal,
       $.wildcard,
@@ -670,7 +724,7 @@ module.exports = grammar({
         optional("const"),
         $.type,
         ":",
-        $.expression,
+        $._expression,
         "]",
       ),
       seq(
@@ -699,7 +753,9 @@ module.exports = grammar({
       /\/\*([^*]|\*[^\/])*\*\//,
     )),
 
-    identifier: _ => token(prec(-1, /[A-Za-z_][A-Za-z0-9_]*/)),
+    _common_identifier: _ => token(/[A-Za-z_][A-Za-z0-9_]*/),
+    type_identifier: $ => $._common_identifier,
+    identifier: $ => $._common_identifier,
     binding_identifier: _ => token(/`[A-Za-z_][A-Za-z0-9_]*/),
     wildcard: _ => token(/_/),
     integer_literal: _ => token(/(0[xX][0-9A-Fa-f]+|0[bB][01]+|0[oO]?[0-7]+|[1-9][0-9]*|0)([uU]?([lL]|[hH]{1,2}|[zZ])?)?/),

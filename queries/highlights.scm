@@ -39,60 +39,36 @@
   "<-"
 ] @keyword
 
-; Types and type parameters
-(struct_type (identifier) @type)
-(union_type (identifier) @type)
-(enum_type (identifier) @type)
-(typeclass_declaration (typeclass_name (identifier) @type))
-(typeclass_declaration (identifier) @type)
-(type_declaration (typevarspec (identifier) @type))
-(type_name (name_spec (identifier) @type))
-(generic_parameter (typevarspec (identifier) @type.parameter))
+; Type
+(type_identifier) @type
 
 ; Functions and macros
 (function_declaration (identifier) @function)
 (macro_declaration (identifier) @function.macro)
 
 ; Calls
-(
-  (postfix_expression
-    (name_spec) @function.call
-    (argument_list))
-)
-(
-  (postfix_expression
-    (postfix_expression
-      (name_spec) @function.call)
-    (argument_list))
-)
-(
-  (postfix_expression
-    (postfix_expression
-      (postfix_expression
-        "."
-        (identifier) @function.method.call))
-    (argument_list))
-)
-(
-  (postfix_expression
-    (postfix_expression
-      (postfix_expression
-        (name_spec)
-        "."
-        (identifier) @function.method.call))
-    (argument_list))
-)
-(
-  (postfix_expression
-    (name_spec) @function.macro.call
-    (macro_arguments))
-)
-(
-  (postfix_expression
-    (postfix_expression
-      (name_spec) @function.macro.call)
-    (macro_arguments))
-)
+(function_call_expression
+  (identifier) @function.call
+  "(")
+
+(function_call_expression
+  (path) @function.call
+  "(")
+
+(function_call_expression
+  (instantiation) @function.call
+  "(")
+
+(function_call_expression
+  (dot_expression
+    "."
+    (identifier) @function.method.call))
+
+(macro_call_expression
+    (path) @function.macro.call)
+
+(macro_call_expression
+    (identifier) @function.macro.call)
 
 ; Constants and enum members
 (const_declaration (identifier) @constant)
@@ -104,7 +80,7 @@
 
 ; Attributes and labels
 (attribute_list (identifier) @attribute)
-(label_statement (identifier) @label)
+(label_statement "@" (identifier) @label)
 (goto_statement (identifier) @label)
 (break_statement (identifier) @label)
 (continue_statement (identifier) @label)
@@ -128,7 +104,6 @@
   "->"
   "=>"
   "@"
-  "?"
 ] @punctuation.delimiter
 
 ; Operators

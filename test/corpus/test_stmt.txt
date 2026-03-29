@@ -1,0 +1,15 @@
+======================
+goto statement
+======================
+fn foo() {
+  goto a;
+}
+---
+(source_file
+  (module_element
+    (function_declaration
+      (identifier)
+      (parameter_list)
+      (comp_statement
+        (goto_statement
+          (identifier))))))
