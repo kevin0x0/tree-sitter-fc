@@ -122,7 +122,7 @@ module.exports = grammar({
         seq(
           $._type_name_spec,
           "for",
-          $.type,
+          $._type,
           "{",
           repeat($.function_declaration),
           "}",
@@ -159,7 +159,7 @@ module.exports = grammar({
       "const",
       optional($.generic_parameters),
       $.identifier,
-      optional(seq(":", $.type)),
+      optional(seq(":", $._type)),
       "=",
       $._expression,
       ";",
@@ -172,7 +172,7 @@ module.exports = grammar({
         $.identifier,
         seq("const", $.identifier),
       ),
-      optional(seq(":", $.type)),
+      optional(seq(":", $._type)),
       optional(seq("=", $._expression)),
       ";",
     ),
@@ -182,7 +182,7 @@ module.exports = grammar({
         "type",
         $.typevarspec,
         "=",
-        $.type,
+        $._type,
         ";",
       ),
       seq(
@@ -190,15 +190,15 @@ module.exports = grammar({
         $.generic_parameters,
         $.typevarspec,
         "=",
-        $.type,
+        $._type,
         ";",
       ),
       seq(
         "type",
         $.typevarspec_list,
-        $.type,
+        $._type,
         "=",
-        $.type,
+        $._type,
         ";",
       ),
     ),
@@ -246,14 +246,14 @@ module.exports = grammar({
     member_definition: $ => seq(
       $.identifier,
       ":",
-      $.type,
+      $._type,
     ),
 
     enum_type: $ => seq(
       "enum",
       optional($.type_identifier),
       ":",
-      $.type,
+      $._type,
       "{",
       commaSep($.enum_member),
       "}",
@@ -266,13 +266,13 @@ module.exports = grammar({
 
     attribute_list: $ => seq(
       "[",
-      commaSep1($.identifier),
+      commaSep($.identifier),
       "]",
     ),
 
     generic_parameters: $ => seq(
       "<",
-      commaSep1($._generic_parameter),
+      commaSep($._generic_parameter),
       ">",
     ),
 
@@ -288,7 +288,7 @@ module.exports = grammar({
 
     typevarspec_list: $ => seq(
       "|",
-      commaSep1($.typevarspec),
+      commaSep($.typevarspec),
       "|",
     ),
 
@@ -305,7 +305,7 @@ module.exports = grammar({
 
     return_type: $ => seq(
       "->",
-      $.type,
+      $._type,
     ),
 
     comp_statement: $ => seq(
@@ -535,7 +535,7 @@ module.exports = grammar({
     postfix_deref_expression: $ => seq($._postfix_expression, "^"),
     postfix_inc_expression: $ => seq($._postfix_expression, "++"),
     postfix_dec_expression: $ => seq($._postfix_expression, "--"),
-    annotation_expression: $ => prec.right(seq($._postfix_expression, ":", $.type)),
+    annotation_expression: $ => prec.right(seq($._postfix_expression, ":", $._type)),
 
     function_call_expression: $ => seq(
       $._postfix_expression,
@@ -649,22 +649,14 @@ module.exports = grammar({
 
     type_arguments: $ => seq(
       "<",
-      commaSep1($.type),
+      commaSep($._type),
       ">",
     ),
 
-    type: $ => choice(
-      $._type_atom,
-      $.prefix_ref_type,
-      $.postfix_ref_type,
-    ),
-
-    prefix_ref_type: $ => prec.right(seq("&", optional("const"), $.type)),
-    postfix_ref_type: $ => prec.right(seq($.type, "@", $.type)),
-
-    _type_atom: $ => choice(
+    _type: $ => prec.right(choice(
       $._type_name_spec,
       $._type_literal,
+      $.type_short_instantiation,
       $.enum_type,
       $.struct_type,
       $.union_type,
@@ -672,12 +664,17 @@ module.exports = grammar({
       $.type_parenthesized,
       $.type_bracket,
       $.type_in_expression,
-    ),
-
-    type_short_instantiation: $ => prec.right(seq(
-      $._type_name_spec,
-      optional($.type_arguments),
+      $.prefix_ref_type,
+      $.postfix_ref_type,
     )),
+
+    prefix_ref_type: $ => prec.right(seq("&", optional("const"), $._type)),
+    postfix_ref_type: $ => prec.right(seq($._type, "@", $._type)),
+
+    type_short_instantiation: $ => seq(
+      $._type_name_spec,
+      $.type_arguments,
+    ),
 
     _type_literal: $ => choice(
       $.integer_literal,
@@ -689,18 +686,18 @@ module.exports = grammar({
       "fn",
       $.type_tuple,
       "->",
-      $.type,
+      $._type,
     )),
 
     type_parenthesized: $ => choice(
       seq("(", ")"),
-      seq("(", $.type, ")"),
-      seq("(", $.type, ",", commaSep($.type), ")"),
+      seq("(", $._type, ")"),
+      seq("(", $._type, ",", commaSep($._type), ")"),
     ),
 
     type_tuple: $ => seq(
       "(",
-      commaSep($.type),
+      commaSep($._type),
       ")",
     ),
 
@@ -708,21 +705,21 @@ module.exports = grammar({
       seq(
         "[",
         optional("const"),
-        $.type,
+        $._type,
         "]",
       ),
       seq(
         "[",
         optional("const"),
-        $.type,
+        $._type,
         ";",
-        $.type,
+        $._type,
         "]",
       ),
       seq(
         "[",
         optional("const"),
-        $.type,
+        $._type,
         ":",
         $._expression,
         "]",
@@ -730,8 +727,8 @@ module.exports = grammar({
       seq(
         "[",
         "@",
-        $.type,
-        $.type,
+        $._type,
+        $._type,
         "]",
       ),
     ),
@@ -739,11 +736,11 @@ module.exports = grammar({
     type_in_expression: $ => prec.right(seq(
       "type",
       optional($.typevarspec_list),
-      $.type,
+      $._type,
       "=",
-      $.type,
+      $._type,
       $.in_keyword,
-      $.type,
+      $._type,
     )),
 
     in_keyword: _ => choice("in", "<-"),
