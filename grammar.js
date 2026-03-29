@@ -16,10 +16,6 @@ const PREC = {
   multiplicative: 7,
   shift: 8,
   bitwise: 9,
-  prefix: 10,
-  postfix: 11,
-  call: 12,
-  member: 13,
 };
 
 function commaSep1(rule) {
@@ -32,6 +28,11 @@ function commaSep(rule) {
 
 function sep1(rule, separator) {
   return seq(rule, repeat(seq(separator, rule)));
+}
+
+const MODULE_PREC = {
+  "module": 0,
+  "module_toplevel": 1
 }
 
 module.exports = grammar({
@@ -51,11 +52,11 @@ module.exports = grammar({
       repeat($.module_element),
     ),
 
-    module_header: $ => seq(
+    module_header: $ => prec(MODULE_PREC.module_toplevel, seq(
       "module",
       $.identifier,
       ";",
-    ),
+    )),
 
     module_path: $ => seq(
       "@",
@@ -84,14 +85,14 @@ module.exports = grammar({
       ";",
     ),
 
-    module_declaration: $ => seq(
+    module_declaration: $ => prec(MODULE_PREC.module, seq(
       "module",
       $.identifier,
       choice(
         ";",
         seq("{", repeat($.module_element), "}"),
       ),
-    ),
+    )),
 
     typeclass_declaration: $ => seq(
       "typeclass",
@@ -154,7 +155,7 @@ module.exports = grammar({
       ";",
     ),
 
-    const_declaration: $ => seq(
+    const_declaration: $ => prec(1, seq(
       "const",
       optional($.generic_parameters),
       $.identifier,
@@ -162,7 +163,7 @@ module.exports = grammar({
       "=",
       $.expression,
       ";",
-    ),
+    )),
 
     static_declaration: $ => seq(
       "static",
@@ -206,19 +207,19 @@ module.exports = grammar({
     union_declaration: $ => seq($.union_type, ";"),
     enum_declaration: $ => seq($.enum_type, ";"),
 
-    struct_type: $ => seq(
+    struct_type: $ => prec.right(seq(
       "struct",
       optional($.generic_parameters),
       optional($.identifier),
       optional($.struct_layout),
-    ),
+    )),
 
-    union_type: $ => seq(
+    union_type: $ => prec.right(seq(
       "union",
       optional($.generic_parameters),
       optional($.identifier),
       optional($.struct_layout),
-    ),
+    )),
 
     struct_layout: $ => seq(
       "{",
@@ -368,21 +369,20 @@ module.exports = grammar({
       $.statement,
     ),
 
-    if_statement: $ => seq(
+    if_statement: $ => prec.right(seq(
       "if",
       "(",
       choice($.let_condition, $.expression),
       ")",
       $.statement,
       optional(seq("else", $.statement)),
-    ),
+    )),
 
     let_condition: $ => seq(
       "let",
       $.expression,
       "=",
       $.expression,
-      optional(seq($.in_keyword, $.expression)),
     ),
 
     while_statement: $ => seq(
@@ -444,26 +444,23 @@ module.exports = grammar({
       $.function_expression,
       $.macro_expression,
       $.binary_expression,
-      $.unary_expression,
-      $.postfix_expression,
-      $.primary_expression,
     ),
 
-    let_expression: $ => seq(
+    let_expression: $ => prec.right(seq(
       "let",
       $.expression,
       "=",
       $.expression,
       $.in_keyword,
       $.expression,
-    ),
+    )),
 
-    case_expression: $ => seq(
+    case_expression: $ => prec.right(seq(
       "case",
       $.expression,
       "of",
       commaSep1($.case_pair),
-    ),
+    )),
 
     case_pair: $ => seq(
       $.expression,
@@ -496,26 +493,26 @@ module.exports = grammar({
     ),
 
     unary_expression: $ => choice(
-      prec(PREC.prefix, seq(
+      seq(
         choice("-", "!", "~", "++", "--", "*", "&", "const"),
         $.unary_expression,
-      )),
+      ),
       $.postfix_expression,
     ),
 
-    postfix_expression: $ => choice(
+    postfix_expression: $ => prec.right(choice(
       $.primary_expression,
-      prec.left(PREC.postfix, seq($.postfix_expression, "@", optional("const"))),
-      prec.left(PREC.postfix, seq($.postfix_expression, "^")),
-      prec.left(PREC.postfix, seq($.postfix_expression, "++")),
-      prec.left(PREC.postfix, seq($.postfix_expression, "--")),
-      prec.left(PREC.postfix, seq($.postfix_expression, ":", $.type)),
-      prec.left(PREC.member, seq($.postfix_expression, ".", choice($.identifier, $.integer_literal))),
-      prec.left(PREC.member, seq($.postfix_expression, "->", $.identifier)),
-      prec.left(PREC.call, seq($.postfix_expression, $.argument_list)),
-      prec.left(PREC.call, seq($.postfix_expression, $.subscript)),
-      prec.left(PREC.call, seq($.postfix_expression, $.macro_arguments)),
-    ),
+      seq($.postfix_expression, "@", optional("const")),
+      seq($.postfix_expression, "^"),
+      seq($.postfix_expression, "++"),
+      seq($.postfix_expression, "--"),
+      seq($.postfix_expression, ":", $.type),
+      seq($.postfix_expression, ".", choice($.identifier, $.integer_literal)),
+      seq($.postfix_expression, "->", $.identifier),
+      seq($.postfix_expression, $.argument_list),
+      seq($.postfix_expression, $.subscript),
+      seq($.postfix_expression, $.macro_arguments),
+    )),
 
     argument_list: $ => seq(
       "(",
@@ -541,13 +538,14 @@ module.exports = grammar({
       prec.right(PREC.assignment, seq($.expression, choice(
         "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=",
       ), $.expression)),
-      prec.left(PREC.and, seq($.expression, "&&", $.expression)),
-      prec.left(PREC.or, seq($.expression, "||", $.expression)),
-      prec.left(PREC.relational, seq($.expression, choice("<", "<=", ">", ">=", "==", "!=",), $.expression)),
-      prec.left(PREC.additive, seq($.expression, choice("+", "-"), $.expression)),
-      prec.left(PREC.multiplicative, seq($.expression, choice("*", "/", "%"), $.expression)),
-      prec.left(PREC.shift, seq($.expression, choice("<<", ">>"), $.expression)),
-      prec.left(PREC.bitwise, seq($.expression, choice("&", "|", "<>"), $.expression)),
+      prec.left(PREC.and, seq($.binary_expression, "&&", $.binary_expression)),
+      prec.left(PREC.or, seq($.binary_expression, "||", $.binary_expression)),
+      prec.left(PREC.relational, seq($.binary_expression, choice("<", "<=", ">", ">=", "==", "!=",), $.binary_expression)),
+      prec.left(PREC.additive, seq($.binary_expression, choice("+", "-"), $.binary_expression)),
+      prec.left(PREC.multiplicative, seq($.binary_expression, choice("*", "/", "%"), $.binary_expression)),
+      prec.left(PREC.shift, seq($.binary_expression, choice("<<", ">>"), $.binary_expression)),
+      prec.left(PREC.bitwise, seq($.binary_expression, choice("&", "|", "<>"), $.binary_expression)),
+      $.unary_expression,
     ),
 
     primary_expression: $ => choice(
@@ -604,21 +602,11 @@ module.exports = grammar({
       ">",
     ),
 
-    type: $ => choice(
-      $.reference_type,
-      $.postfix_type,
-    ),
-
-    reference_type: $ => seq(
-      "&",
-      optional("const"),
-      $.type,
-    ),
-
-    postfix_type: $ => choice(
+    type: $ => prec.right(choice(
       $.type_atom,
-      prec.left(PREC.postfix, seq($.postfix_type, "@", $.type)),
-    ),
+      seq("&", optional("const"), $.type),
+      seq($.type, "@", $.type),
+    )),
 
     type_atom: $ => choice(
       $.type_name,
@@ -632,10 +620,10 @@ module.exports = grammar({
       $.type_in_expression,
     ),
 
-    type_name: $ => seq(
+    type_name: $ => prec.right(seq(
       $.name_spec,
       optional($.type_arguments),
-    ),
+    )),
 
     type_literal: $ => choice(
       $.integer_literal,
@@ -643,12 +631,12 @@ module.exports = grammar({
       $.wildcard,
     ),
 
-    type_function: $ => seq(
+    type_function: $ => prec.right(seq(
       "fn",
       $.type_tuple,
       "->",
       $.type,
-    ),
+    )),
 
     type_parenthesized: $ => choice(
       seq("(", ")"),
@@ -694,7 +682,7 @@ module.exports = grammar({
       ),
     ),
 
-    type_in_expression: $ => seq(
+    type_in_expression: $ => prec.right(seq(
       "type",
       optional($.typevarspec_list),
       $.type,
@@ -702,13 +690,13 @@ module.exports = grammar({
       $.type,
       $.in_keyword,
       $.type,
-    ),
+    )),
 
     in_keyword: _ => choice("in", "<-"),
 
     comment: _ => token(choice(
       /\/\/[^\n\r]*/,
-      /\/\*[^]*?\*\//,
+      /\/\*([^*]|\*[^\/])*\*\//,
     )),
 
     identifier: _ => token(prec(-1, /[A-Za-z_][A-Za-z0-9_]*/)),
