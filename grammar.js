@@ -616,7 +616,9 @@ module.exports = grammar({
       $.binding_identifier,
       $.wildcard,
       $.array_expression,
-      $.parenthesized_expression,
+      $.grouped_expression,
+      $.tuple_expression,
+      $.comp_expression,
     ),
 
     construction_expression: $ => seq(
@@ -638,12 +640,18 @@ module.exports = grammar({
       "]",
     ),
 
-    parenthesized_expression: $ => choice(
-      seq("(", ")"),
-      seq("(", $._expression, ")"),
-      seq("(", $._expression, ",", comma_separated($._expression), ")"),
-      seq("(", $.comp_statement, ")"),
+    grouped_expression: $ => seq("(", $._expression, ")"),
+
+    tuple_expression: $ =>seq(
+      "(",
+      optional(seq(
+        $._expression,
+        ",",
+        comma_separated($._expression),
+      )),
+      ")"
     ),
+    comp_expression: $ => seq("(", $.comp_statement, ")"),
 
     _name_spec: $ => choice(
       $.identifier,

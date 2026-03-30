@@ -6,7 +6,7 @@ const foo = (true, false, 1, 1.0, 'a', "bar");
 (source_file
     (const_declaration
       (identifier)
-      (parenthesized_expression
+      (tuple_expression
         (boolean_literal)
         (boolean_literal)
         (integer_literal)
@@ -22,7 +22,7 @@ const foo = (foo.bar, foo->bar, foo.0);
 (source_file
     (const_declaration
       (identifier)
-      (parenthesized_expression
+      (tuple_expression
         (dot_expression
           (identifier)
           (identifier))

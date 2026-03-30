@@ -32,6 +32,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -52,6 +56,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -65,10 +73,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -109,6 +113,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -207,6 +215,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -228,6 +240,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -260,10 +276,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -311,6 +323,10 @@
           "named": true
         },
         {
+          "type": "tuple_expression",
+          "named": true
+        },
+        {
           "type": "wildcard",
           "named": true
         }
@@ -350,6 +366,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -366,6 +386,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -379,10 +403,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -411,6 +431,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -476,6 +500,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -493,6 +521,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -517,10 +549,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -565,6 +593,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -611,6 +643,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -628,6 +664,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -652,10 +692,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -700,6 +736,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -782,6 +822,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -803,6 +847,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -835,10 +883,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -883,6 +927,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -937,6 +985,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -958,6 +1010,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -990,10 +1046,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -1041,7 +1093,26 @@
           "named": true
         },
         {
+          "type": "tuple_expression",
+          "named": true
+        },
+        {
           "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "comp_statement",
           "named": true
         }
       ]
@@ -1179,6 +1250,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -1211,6 +1286,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1240,10 +1319,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -1300,6 +1375,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -1390,6 +1469,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -1407,6 +1490,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -1431,10 +1518,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -1479,6 +1562,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -1583,6 +1670,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "comp_statement",
           "named": true
         },
@@ -1639,6 +1730,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1684,10 +1779,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -1747,6 +1838,10 @@
           "named": true
         },
         {
+          "type": "tuple_expression",
+          "named": true
+        },
+        {
           "type": "type_declaration",
           "named": true
         },
@@ -1798,6 +1893,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -1814,6 +1913,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1827,10 +1930,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -1859,6 +1958,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -1928,6 +2031,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -1949,6 +2056,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -1981,10 +2092,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -2029,6 +2136,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -2170,6 +2281,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -2191,6 +2306,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -2223,10 +2342,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -2271,6 +2386,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -2326,6 +2445,10 @@
         },
         {
           "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "comp_expression",
           "named": true
         },
         {
@@ -2385,6 +2508,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2430,10 +2557,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -2490,6 +2613,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -2556,6 +2683,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -2577,6 +2708,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -2609,10 +2744,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -2657,6 +2788,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -2746,6 +2881,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "comp_statement",
           "named": true
         },
@@ -2771,6 +2910,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -2807,10 +2950,6 @@
         },
         {
           "type": "parameter_list",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -2859,6 +2998,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -2959,6 +3102,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -2980,6 +3127,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -3012,10 +3163,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -3060,6 +3207,173 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "grouped_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "annotation_expression",
+          "named": true
+        },
+        {
+          "type": "array_expression",
+          "named": true
+        },
+        {
+          "type": "arrow_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "binding_identifier",
+          "named": true
+        },
+        {
+          "type": "bnot_expression",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
+          "type": "const_expression",
+          "named": true
+        },
+        {
+          "type": "construction_expression",
+          "named": true
+        },
+        {
+          "type": "dot_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "instantiation",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "macro_call_expression",
+          "named": true
+        },
+        {
+          "type": "macro_expression",
+          "named": true
+        },
+        {
+          "type": "neg_expression",
+          "named": true
+        },
+        {
+          "type": "not_expression",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "postfix_dec_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_deref_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_inc_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_dec_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_deref_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_inc_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -3123,6 +3437,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "comp_statement",
           "named": true
         },
@@ -3179,6 +3497,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3228,10 +3550,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -3288,6 +3606,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -3508,6 +3830,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -3529,6 +3855,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -3561,10 +3891,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -3609,6 +3935,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -3781,6 +4111,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -3802,6 +4136,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -3834,10 +4172,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -3882,6 +4216,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -3936,6 +4274,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -3957,6 +4299,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -3993,10 +4339,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4041,6 +4383,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4095,6 +4441,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -4116,6 +4466,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -4148,10 +4502,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4196,6 +4546,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4250,6 +4604,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -4271,6 +4629,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -4303,10 +4665,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4351,6 +4709,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4405,6 +4767,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -4426,6 +4792,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -4462,10 +4832,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4510,6 +4876,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4564,6 +4934,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -4585,6 +4959,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -4621,10 +4999,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4669,6 +5043,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4723,6 +5101,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -4744,6 +5126,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -4776,10 +5162,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -4824,6 +5206,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -4879,6 +5265,10 @@
         },
         {
           "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "comp_expression",
           "named": true
         },
         {
@@ -4938,6 +5328,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4983,10 +5377,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -5043,6 +5433,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -5109,6 +5503,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -5130,6 +5528,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -5166,10 +5568,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -5214,6 +5612,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -5440,6 +5842,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -5457,6 +5863,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -5481,10 +5891,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -5529,6 +5935,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -5575,6 +5985,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -5592,6 +6006,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -5616,10 +6034,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -5664,6 +6078,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -5718,6 +6136,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -5739,6 +6161,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -5771,10 +6197,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -5822,162 +6244,7 @@
           "named": true
         },
         {
-          "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "parenthesized_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "annotation_expression",
-          "named": true
-        },
-        {
-          "type": "array_expression",
-          "named": true
-        },
-        {
-          "type": "arrow_expression",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "binding_identifier",
-          "named": true
-        },
-        {
-          "type": "bnot_expression",
-          "named": true
-        },
-        {
-          "type": "boolean_literal",
-          "named": true
-        },
-        {
-          "type": "case_expression",
-          "named": true
-        },
-        {
-          "type": "char_literal",
-          "named": true
-        },
-        {
-          "type": "comp_statement",
-          "named": true
-        },
-        {
-          "type": "const_expression",
-          "named": true
-        },
-        {
-          "type": "construction_expression",
-          "named": true
-        },
-        {
-          "type": "dot_expression",
-          "named": true
-        },
-        {
-          "type": "float_literal",
-          "named": true
-        },
-        {
-          "type": "function_call_expression",
-          "named": true
-        },
-        {
-          "type": "function_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "instantiation",
-          "named": true
-        },
-        {
-          "type": "integer_literal",
-          "named": true
-        },
-        {
-          "type": "let_expression",
-          "named": true
-        },
-        {
-          "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "macro_expression",
-          "named": true
-        },
-        {
-          "type": "neg_expression",
-          "named": true
-        },
-        {
-          "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "postfix_dec_expression",
-          "named": true
-        },
-        {
-          "type": "postfix_deref_expression",
-          "named": true
-        },
-        {
-          "type": "postfix_inc_expression",
-          "named": true
-        },
-        {
-          "type": "postfix_ref_expression",
-          "named": true
-        },
-        {
-          "type": "prefix_dec_expression",
-          "named": true
-        },
-        {
-          "type": "prefix_deref_expression",
-          "named": true
-        },
-        {
-          "type": "prefix_inc_expression",
-          "named": true
-        },
-        {
-          "type": "prefix_ref_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subscript_expression",
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6043,6 +6310,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -6059,6 +6330,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -6072,10 +6347,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6104,6 +6375,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6146,6 +6421,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -6162,6 +6441,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -6175,10 +6458,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6207,6 +6486,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6249,6 +6532,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -6265,6 +6552,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -6278,10 +6569,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6310,6 +6597,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6352,6 +6643,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "construction_expression",
           "named": true
         },
@@ -6368,6 +6663,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -6381,10 +6680,6 @@
         },
         {
           "type": "macro_call_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6413,6 +6708,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6542,6 +6841,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -6559,6 +6862,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -6583,10 +6890,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6631,6 +6934,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6677,6 +6984,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -6694,6 +7005,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -6718,10 +7033,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6766,6 +7077,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6812,6 +7127,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -6829,6 +7148,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -6853,10 +7176,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -6901,6 +7220,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -6947,6 +7270,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -6964,6 +7291,10 @@
         },
         {
           "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -6988,10 +7319,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -7036,6 +7363,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -7173,6 +7504,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -7194,6 +7529,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -7226,10 +7565,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -7274,6 +7609,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -7483,6 +7822,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -7508,6 +7851,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -7540,10 +7887,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -7600,6 +7943,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -7804,6 +8151,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "const_expression",
           "named": true
         },
@@ -7825,6 +8176,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
           "named": true
         },
         {
@@ -7857,10 +8212,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -7905,6 +8256,173 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
+          "named": true
+        },
+        {
+          "type": "wildcard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tuple_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "annotation_expression",
+          "named": true
+        },
+        {
+          "type": "array_expression",
+          "named": true
+        },
+        {
+          "type": "arrow_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "binding_identifier",
+          "named": true
+        },
+        {
+          "type": "bnot_expression",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "case_expression",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
+          "type": "const_expression",
+          "named": true
+        },
+        {
+          "type": "construction_expression",
+          "named": true
+        },
+        {
+          "type": "dot_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "function_call_expression",
+          "named": true
+        },
+        {
+          "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "instantiation",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "macro_call_expression",
+          "named": true
+        },
+        {
+          "type": "macro_expression",
+          "named": true
+        },
+        {
+          "type": "neg_expression",
+          "named": true
+        },
+        {
+          "type": "not_expression",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "postfix_dec_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_deref_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_inc_expression",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_dec_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_deref_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_inc_expression",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
@@ -8938,6 +9456,10 @@
           "named": true
         },
         {
+          "type": "comp_expression",
+          "named": true
+        },
+        {
           "type": "comp_statement",
           "named": true
         },
@@ -8994,6 +9516,10 @@
           "named": true
         },
         {
+          "type": "grouped_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -9043,10 +9569,6 @@
         },
         {
           "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -9103,6 +9625,10 @@
         },
         {
           "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_expression",
           "named": true
         },
         {
