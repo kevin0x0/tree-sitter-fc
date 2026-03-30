@@ -53,7 +53,7 @@ module.exports = grammar({
     source_file: $ => seq(
       optional($.module_header),
       optional($.module_path),
-      repeat($.module_element),
+      repeat($._module_element),
     ),
 
     module_header: $ => prec(MODULE_PREC.module_toplevel, seq(
@@ -68,7 +68,7 @@ module.exports = grammar({
       ";",
     ),
 
-    module_element: $ => choice(
+    _module_element: $ => choice(
       $.import_declaration,
       $.module_declaration,
       $.typeclass_declaration,
@@ -94,7 +94,7 @@ module.exports = grammar({
       $.identifier,
       choice(
         ";",
-        seq("{", repeat($.module_element), "}"),
+        seq("{", repeat($._module_element), "}"),
       ),
     )),
 
@@ -349,11 +349,10 @@ module.exports = grammar({
 
     let_statement: $ => seq(
       "let",
-      $._expression,
+      $._binary_expression,
       optional(seq(
         "=",
         $._expression,
-        optional(seq($.in_keyword, $._expression)),
       )),
       ";",
     ),
@@ -396,7 +395,7 @@ module.exports = grammar({
 
     let_condition: $ => seq(
       "let",
-      $._expression,
+      $._binary_expression,
       "=",
       $._expression,
     ),
@@ -464,7 +463,7 @@ module.exports = grammar({
 
     let_expression: $ => prec.right(seq(
       "let",
-      $._expression,
+      $._binary_expression,
       "=",
       $._expression,
       $.in_keyword,

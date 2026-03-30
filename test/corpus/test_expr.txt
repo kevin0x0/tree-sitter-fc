@@ -4,7 +4,6 @@ literals
 const foo = (true, false, 1, 1.0, 'a', "bar");
 ---
 (source_file
-  (module_element
     (const_declaration
       (identifier)
       (parenthesized_expression
@@ -13,7 +12,7 @@ const foo = (true, false, 1, 1.0, 'a', "bar");
         (integer_literal)
         (float_literal)
         (char_literal)
-        (string_literal)))))
+        (string_literal))))
 
 ======================
 member access
@@ -21,7 +20,6 @@ member access
 const foo = (foo.bar, foo->bar, foo.0);
 ---
 (source_file
-  (module_element
     (const_declaration
       (identifier)
       (parenthesized_expression
@@ -33,4 +31,4 @@ const foo = (foo.bar, foo->bar, foo.0);
           (identifier))
         (dot_expression
           (identifier)
-          (integer_literal))))))
+          (integer_literal)))))

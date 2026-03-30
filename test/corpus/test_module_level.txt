@@ -4,12 +4,11 @@ function declaration
 fn main() -> ();
 ---
 (source_file
-  (module_element
     (function_declaration
       (identifier)
       (parameter_list)
       (return_type
-        (type_tuple)))))
+        (type_tuple))))
 
 ======================
 generic function declaration
@@ -17,7 +16,6 @@ generic function declaration
 fn<T, L@int> foo(a: [T; L]);
 ---
 (source_file
-  (module_element
     (function_declaration
       (generic_parameters
         (type_identifier)
@@ -29,14 +27,28 @@ fn<T, L@int> foo(a: [T; L]);
           (identifier)
           (type_array
             (type_identifier)
-            (type_identifier)))))))
+            (type_identifier))))))
 
 ======================
-impl type
+impl for type
 ======================
-impl for array {}
+impl<T, L@int> for array {}
 ---
 (source_file
-  (module_element
-    (impl_declaration
-      (identifier))))
+  (impl_declaration
+    (generic_parameters
+      (type_identifier)
+      (typevarspec_literal_type
+        (type_identifier)))
+    (identifier)))
+
+======================
+static
+======================
+static foo: int = 3;
+---
+(source_file
+  (static_declaration
+    (identifier)
+    (type_identifier)
+    (integer_literal)))
