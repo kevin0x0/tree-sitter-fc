@@ -1,0 +1,42 @@
+======================
+function declaration
+======================
+fn main() -> ();
+---
+(source_file
+  (module_element
+    (function_declaration
+      (identifier)
+      (parameter_list)
+      (return_type
+        (type_tuple)))))
+
+======================
+generic function declaration
+======================
+fn<T, L@int> foo(a: [T; L]);
+---
+(source_file
+  (module_element
+    (function_declaration
+      (generic_parameters
+        (type_identifier)
+        (typevarspec_literal_type
+          (type_identifier)))
+      (identifier)
+      (parameter_list
+        (annotation_expression
+          (identifier)
+          (type_array
+            (type_identifier)
+            (type_identifier)))))))
+
+======================
+impl type
+======================
+impl for array {}
+---
+(source_file
+  (module_element
+    (impl_declaration
+      (identifier))))
