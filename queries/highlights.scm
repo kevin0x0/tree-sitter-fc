@@ -76,6 +76,11 @@
     "."
     (identifier) @function.method.call))
 
+(function_call_expression
+  (arrow_expression
+    "->"
+    (identifier) @function.method.call))
+
 (macro_call_expression
     (path) @function.macro.call)
 
