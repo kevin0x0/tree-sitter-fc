@@ -52,3 +52,16 @@ static foo: int = 3;
     (identifier)
     (type_identifier)
     (integer_literal)))
+
+======================
+macro definition
+======================
+macro foo!(`a, `b) => `a;
+---
+(source_file
+  (macro_declaration
+    (identifier)
+    (macro_param_pair
+      (binding_identifier)
+      (binding_identifier))
+    (binding_identifier)))

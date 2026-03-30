@@ -153,7 +153,10 @@ module.exports = grammar({
     macro_declaration: $ => seq(
       "macro",
       $.identifier,
-      $.macro_parameters,
+      "!",
+      "(",
+      $._macro_parameter,
+      ")",
       "=>",
       $._expression,
       ";",
@@ -495,16 +498,23 @@ module.exports = grammar({
 
     macro_expression: $ => seq(
       "macro",
-      $.macro_parameters,
+      "!",
+      "(",
+      $._macro_parameter,
+      ")",
       "=>",
       $._expression,
     ),
 
-    macro_parameters: $ => seq(
-      "!",
-      "(",
-      comma_separated($._expression),
-      ")",
+    _macro_parameter: $ => choice(
+      $._expression,
+      $.macro_param_pair,
+    ),
+
+    macro_param_pair: $ => seq(
+      $._expression,
+      ",",
+      $._macro_parameter,
     ),
 
     _unary_expression: $ => choice(
@@ -569,7 +579,7 @@ module.exports = grammar({
       $._postfix_expression,
       "!",
       "(",
-      comma_separated($._expression),
+      $._macro_parameter,
       ")",
     ),
 

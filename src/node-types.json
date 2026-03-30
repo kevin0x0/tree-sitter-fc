@@ -4660,6 +4660,10 @@
           "named": true
         },
         {
+          "type": "macro_param_pair",
+          "named": true
+        },
+        {
           "type": "neg_expression",
           "named": true
         },
@@ -4823,7 +4827,7 @@
           "named": true
         },
         {
-          "type": "macro_parameters",
+          "type": "macro_param_pair",
           "named": true
         },
         {
@@ -4990,7 +4994,7 @@
           "named": true
         },
         {
-          "type": "macro_parameters",
+          "type": "macro_param_pair",
           "named": true
         },
         {
@@ -5057,12 +5061,12 @@
     }
   },
   {
-    "type": "macro_parameters",
+    "type": "macro_param_pair",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "annotation_expression",
@@ -5154,6 +5158,10 @@
         },
         {
           "type": "macro_expression",
+          "named": true
+        },
+        {
+          "type": "macro_param_pair",
           "named": true
         },
         {
