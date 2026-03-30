@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "float_literal",
           "named": true
         },
@@ -84,7 +88,19 @@
           "named": true
         },
         {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -92,7 +108,39 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         },
         {
@@ -259,7 +307,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",
@@ -533,6 +581,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "boolean_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "break_statement",
@@ -999,6 +1052,10 @@
           "named": true
         },
         {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "float_literal",
           "named": true
         },
@@ -1071,6 +1128,10 @@
           "named": true
         },
         {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
           "type": "prefix_dec_expression",
           "named": true
         },
@@ -1087,7 +1148,15 @@
           "named": true
         },
         {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -1095,7 +1164,39 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         },
         {
@@ -1783,15 +1884,71 @@
       "required": true,
       "types": [
         {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
           "type": "enum_member",
           "named": true
         },
         {
-          "type": "type",
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
           "named": true
         },
         {
           "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -2557,7 +2714,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "generic_parameter_spec",
@@ -2966,6 +3123,14 @@
       "required": true,
       "types": [
         {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
@@ -2982,7 +3147,27 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
           "named": true
         },
         {
@@ -2990,11 +3175,31 @@
           "named": true
         },
         {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
           "type": "type_instantiation",
           "named": true
         },
         {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
           "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -4788,11 +4993,71 @@
       "required": true,
       "types": [
         {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "type",
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -5902,7 +6167,67 @@
       "required": true,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6441,7 +6766,67 @@
       "required": true,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6607,7 +6992,67 @@
       "required": true,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6694,6 +7139,10 @@
           "named": true
         },
         {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "float_literal",
           "named": true
         },
@@ -6762,6 +7211,10 @@
           "named": true
         },
         {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
           "type": "prefix_dec_expression",
           "named": true
         },
@@ -6778,7 +7231,15 @@
           "named": true
         },
         {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -6786,7 +7247,39 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         },
         {
@@ -7054,12 +7547,12 @@
     }
   },
   {
-    "type": "type",
+    "type": "type_arguments",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
           "type": "boolean_literal",
@@ -7114,26 +7607,15 @@
           "named": true
         },
         {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
           "type": "union_type",
           "named": true
         },
         {
           "type": "wildcard",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "type_arguments",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "type",
           "named": true
         }
       ]
@@ -7189,6 +7671,10 @@
         },
         {
           "type": "dot_expression",
+          "named": true
+        },
+        {
+          "type": "enum_type",
           "named": true
         },
         {
@@ -7260,6 +7746,10 @@
           "named": true
         },
         {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
           "type": "prefix_dec_expression",
           "named": true
         },
@@ -7276,7 +7766,15 @@
           "named": true
         },
         {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_type",
           "named": true
         },
         {
@@ -7284,7 +7782,39 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         },
         {
@@ -7303,11 +7833,63 @@
       "required": true,
       "types": [
         {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "generic_parameters",
           "named": true
         },
         {
-          "type": "type",
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
           "named": true
         },
         {
@@ -7316,6 +7898,14 @@
         },
         {
           "type": "typevarspec_list",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7330,11 +7920,71 @@
       "required": true,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
           "named": true
         },
         {
           "type": "type_tuple",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7354,15 +8004,75 @@
       "required": true,
       "types": [
         {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
           "type": "in_keyword",
           "named": true
         },
         {
-          "type": "type",
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
           "named": true
         },
         {
           "type": "typevarspec_list",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7404,7 +8114,67 @@
       "required": false,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7434,6 +8204,33 @@
     }
   },
   {
+    "type": "type_short_instantiation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "type_arguments",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type_tuple",
     "named": true,
     "fields": {},
@@ -7442,7 +8239,67 @@
       "required": false,
       "types": [
         {
-          "type": "type",
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "enum_type",
+          "named": true
+        },
+        {
+          "type": "integer_literal",
+          "named": true
+        },
+        {
+          "type": "postfix_ref_type",
+          "named": true
+        },
+        {
+          "type": "prefix_ref_type",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "type_bracket",
+          "named": true
+        },
+        {
+          "type": "type_function",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "type_in_expression",
+          "named": true
+        },
+        {
+          "type": "type_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_parenthesized",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_short_instantiation",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -7519,7 +8376,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "typevarspec",
@@ -7978,10 +8835,6 @@
     "named": false
   },
   {
-    "type": "boolean_literal",
-    "named": true
-  },
-  {
     "type": "break",
     "named": false
   },
@@ -8016,6 +8869,10 @@
   },
   {
     "type": "enum",
+    "named": false
+  },
+  {
+    "type": "false",
     "named": false
   },
   {
@@ -8092,6 +8949,10 @@
   },
   {
     "type": "struct",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {

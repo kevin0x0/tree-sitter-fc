@@ -1,0 +1,16 @@
+======================
+literals
+======================
+const foo = (true, false, 1, 1.0, 'a', "bar");
+---
+(source_file
+  (module_element
+    (const_declaration
+      (identifier)
+      (parenthesized_expression
+        (boolean_literal)
+        (boolean_literal)
+        (integer_literal)
+        (float_literal)
+        (char_literal)
+        (string_literal)))))

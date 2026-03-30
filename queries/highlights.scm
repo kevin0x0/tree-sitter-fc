@@ -6,6 +6,7 @@
 (float_literal) @number
 (boolean_literal) @boolean
 (wildcard) @constant.builtin
+[ "true" "false" ] @constant.builtin
 (binding_identifier) @variable.parameter
 
 ; Keywords
@@ -52,11 +53,22 @@
   "(")
 
 (function_call_expression
-  (path) @function.call
+  (path
+      "::"
+     (identifier) @function.call)
   "(")
 
 (function_call_expression
-  (instantiation) @function.call
+  (instantiation
+    (path 
+      "::"
+      (identifier) @function.call))
+  "(")
+
+(function_call_expression
+  (instantiation
+    (identifier) @function.call
+    "::")
   "(")
 
 (function_call_expression

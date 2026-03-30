@@ -18,21 +18,21 @@ const PREC = {
   bitwise: 9,
 };
 
-function commaSep1(rule) {
-  return seq(rule, repeat(seq(",", rule)));
-}
-
-function commaSep(rule) {
-  return optional(commaSep1(rule));
-}
-
-function sep1(rule, separator) {
-  return seq(rule, repeat(seq(separator, rule)));
-}
-
 const MODULE_PREC = {
   "module": 0,
   "module_toplevel": 1
+}
+
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)), optional(separator));
+}
+
+function comma_separated_1(rule) {
+  return sep1(rule, ",");
+}
+
+function comma_separated(rule) {
+  return optional(comma_separated_1(rule));
 }
 
 module.exports = grammar({
@@ -105,7 +105,7 @@ module.exports = grammar({
 
     typeclass_name: $ => seq(
       $.identifier,
-      optional(seq("(", commaSep1($._type_name_spec), ")")),
+      optional(seq("(", comma_separated($._type_name_spec), ")")),
     ),
 
     impl_declaration: $ => seq(
@@ -223,7 +223,7 @@ module.exports = grammar({
 
     struct_layout: $ => seq(
       "{",
-      commaSep($.struct_layout_item),
+      comma_separated($.struct_layout_item),
       "}",
     ),
 
@@ -255,7 +255,7 @@ module.exports = grammar({
       ":",
       $._type,
       "{",
-      commaSep($.enum_member),
+      comma_separated($.enum_member),
       "}",
     ),
 
@@ -266,13 +266,13 @@ module.exports = grammar({
 
     attribute_list: $ => seq(
       "[",
-      commaSep($.identifier),
+      comma_separated($.identifier),
       "]",
     ),
 
     generic_parameters: $ => seq(
       "<",
-      commaSep($._generic_parameter),
+      comma_separated($._generic_parameter),
       ">",
     ),
 
@@ -288,7 +288,7 @@ module.exports = grammar({
 
     typevarspec_list: $ => seq(
       "|",
-      commaSep($.typevarspec),
+      comma_separated($.typevarspec),
       "|",
     ),
 
@@ -299,7 +299,7 @@ module.exports = grammar({
 
     parameter_list: $ => seq(
       "(",
-      commaSep($._expression),
+      comma_separated($._expression),
       ")",
     ),
 
@@ -464,7 +464,7 @@ module.exports = grammar({
       "case",
       $._expression,
       "of",
-      commaSep1($.case_pair),
+      comma_separated_1($.case_pair),
     )),
 
     case_pair: $ => seq(
@@ -493,7 +493,7 @@ module.exports = grammar({
     macro_parameters: $ => seq(
       "!",
       "(",
-      commaSep($._expression),
+      comma_separated($._expression),
       ")",
     ),
 
@@ -540,7 +540,7 @@ module.exports = grammar({
     function_call_expression: $ => seq(
       $._postfix_expression,
       "(",
-      commaSep($._expression),
+      comma_separated($._expression),
       ")",
     ),
 
@@ -553,7 +553,7 @@ module.exports = grammar({
       $._postfix_expression,
       "!",
       "(",
-      commaSep($._expression),
+      comma_separated($._expression),
       ")",
     ),
 
@@ -606,7 +606,7 @@ module.exports = grammar({
     construction_expression: $ => seq(
       $._name_spec,
       "{",
-      commaSep($.init_pair),
+      comma_separated($.init_pair),
       "}",
     ),
 
@@ -618,14 +618,14 @@ module.exports = grammar({
 
     array_expression: $ => seq(
       "[",
-      commaSep($._expression),
+      comma_separated($._expression),
       "]",
     ),
 
     parenthesized_expression: $ => choice(
       seq("(", ")"),
       seq("(", $._expression, ")"),
-      seq("(", $._expression, ",", commaSep($._expression), ")"),
+      seq("(", $._expression, ",", comma_separated($._expression), ")"),
       seq("(", $.comp_statement, ")"),
     ),
 
@@ -649,7 +649,7 @@ module.exports = grammar({
 
     type_arguments: $ => seq(
       "<",
-      commaSep($._type),
+      comma_separated($._type),
       ">",
     ),
 
@@ -692,12 +692,12 @@ module.exports = grammar({
     type_parenthesized: $ => choice(
       seq("(", ")"),
       seq("(", $._type, ")"),
-      seq("(", $._type, ",", commaSep($._type), ")"),
+      seq("(", $._type, ",", comma_separated($._type), ")"),
     ),
 
     type_tuple: $ => seq(
       "(",
-      commaSep($._type),
+      comma_separated($._type),
       ")",
     ),
 
@@ -759,7 +759,7 @@ module.exports = grammar({
     float_literal: _ => token(/[0-9]+\.[0-9]+([lL]?[fF])?/),
     char_literal: _ => token(/'([^'\\]|\\x[0-9A-Fa-f]+|\\.)'/),
     string_literal: _ => token(/"([^"\\]|\\.)*"/),
-    boolean_literal: _ => token(choice("true", "false")),
+    boolean_literal: _ => choice("true", "false"),
   },
 
 });
